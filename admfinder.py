@@ -37,6 +37,7 @@ def check(query):
 
 
 if __name__ == '__main__':
+    os.system('clear')
     banner()
     parser = argparse.ArgumentParser()
     parser.add_argument('-u', type=str, metavar='url', help='Url address for scanning. For example: http://target.com')
