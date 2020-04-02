@@ -10,7 +10,7 @@ pip install -r requirements.txt
 chmod +x adminfinder.py
 python adminfinder.py -h
 ```
-# В будущем:
+# In future:
 1. Add proxy support
 2. I will expand the dictionary for directories
 3. ...
