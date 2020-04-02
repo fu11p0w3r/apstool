@@ -1,4 +1,5 @@
 # adminfinder
+![alt text](screenshots/adminfinder_screenshot.png "Tool screenshot")​
 The first version of a simple program that searches using the brute force admin panel on sites.
 The program uses 3.* version of python, but maybe it will go to 2.* Try this :)
 
