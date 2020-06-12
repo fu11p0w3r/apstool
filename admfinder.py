@@ -51,7 +51,7 @@ if __name__ == '__main__':
         check(args.u)
         if len(result) != 0:
             banner()
-            puts(colored.green('<><><><><><><><><><><><><><><><><><><><><><>'))
+            puts(colored.green('<><><><><><><><><><><><><><><><><><><><><>'))
             for i in result:
                 puts(colored.green('[FOUND] ' + i))
         else:
