@@ -9,12 +9,18 @@ git clone https://github.com/fu11p0w3r/adminfinder
 cd adminfinder
 pip install -r requirements.txt
 chmod +x adminfinder.py
-python adminfinder.py -h
+python adminfinder.py
 ```
+
+# CHANGE LOG
+```
+v0.2:
+- Added new directories
+- Completely rewritten with the addition of asynchrony in requests
+```
+
 # In future:
-1. Add proxy support
-2. I will expand the dictionary for directories
-3. ...
+I want to add a proxy
 
 If you have ideas what to add, I will be glad to hear.
 Good luck :)
