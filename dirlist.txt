@@ -1,8 +1,14 @@
+/admin.php
+/grievance/adminlogin.aspx
+/Login/adminlogin.aspx
+/Admin4/AdminLogin.aspx
 /acceso.asp
 /acceso.php
 /access/
 /access.php
 /account/
+/Admin-Login.aspx
+/english/admin-login
 /account.asp
 /account.html
 /account.php
@@ -20,6 +26,10 @@
 /_admin_/
 /_admin/
 /admin/
+/admin/login.php
+/admin/db_login.php
+/admin/login.asp
+/admin/login.html
 /Admin/
 /ADMIN/
 /admin1/
@@ -247,6 +257,7 @@
 /adm.php
 /affiliate.asp
 /affiliate.php
+/asp/login/admin.asp
 /auth/
 /auth/login/
 /authorize.php
@@ -555,7 +566,7 @@
 /yonetici.html
 /yonetici.php
 /yonetim.php
-phpmyadmin/
+/phpmyadmin/
 /phpMyAdmin/
 /PMA/
 /pma/
