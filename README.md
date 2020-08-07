@@ -1,7 +1,7 @@
 # adminfinder
 ![alt text](screenshots/adminfinder_screenshot.png "Tool screenshot")​
-The first version of a simple program that searches using the brute force admin panel on sites.
-The program uses 3.* version of python, but maybe it will go to 2.* Try this :)
+A small tool for searching for admin panels on a site or pages with an entrance, by brute force.
+
 
 # How to start using
 For Linux users:
