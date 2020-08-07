@@ -52,7 +52,7 @@ class AdminPanelSearchTool(object):
             try:
                 response = await session.get(url, allow_redirects=False)
             except aiohttp.ClientConnectorError:
-                self._clintprint('[Error] Connection error, try next')
+                self._clintprint('[Error] Connection error, trying next...', 'red')
             else:
                 self._scanned_dirs_count += 1
                 if response.status == 200:
