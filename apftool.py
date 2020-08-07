@@ -8,12 +8,12 @@ from clint.textui import colored, puts
 from progress.spinner import Spinner
 
 
-class AdminFinder(object):
+class AdminPageFinderTool(object):
 
     def __init__(self):
         self._banner()
         self._url = None
-        self._dir_list = []
+        self._wordlist = []
         self._status_200 = []
         self.redirected = []
         self._scanned_dirs_count = 0
@@ -22,16 +22,14 @@ class AdminFinder(object):
     def _banner(self):
         self._clear_console()
         self._clintprint("""  
-    ██████╗ ██████╗ ███╗   ███╗██╗███╗   ██╗███████╗██╗███╗   ██╗██████╗ ███████╗██████╗   
-    ██╔══██╗██╔══██╗████╗ ████║██║████╗  ██║██╔════╝██║████╗  ██║██╔══██╗██╔════╝██╔══██╗ 
-    ███████║██║  ██║██╔████╔██║██║██╔██╗ ██║█████╗  ██║██╔██╗ ██║██║  ██║█████╗  ██████╔╝ 
-    ██╔══██║██║  ██║██║╚██╔╝██║██║██║╚██╗██║██╔══╝  ██║██║╚██╗██║██║  ██║██╔══╝  ██╔══██╗ 
-    ██║  ██║██████╔╝██║ ╚═╝ ██║██║██║ ╚████║██║     ██║██║ ╚████║██████╔╝███████╗██║  ██║ 
-    ╚═╝  ╚═╝╚═════╝ ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝     ╚═╝╚═╝  ╚═══╝╚═════╝ ╚══════╝╚═╝  ╚═╝ v0.2 
-    Little tool for searching admin panel login forms                  [Author]: fu11p0w3r """)
-
-    def _mini_banner(self):
-        self._clintprint('  /==[ ADMINFINDER ]==\\ \n')
+                __ _              _ 
+    __ _ _ __  / _| |_ ___   ___ | |
+   / _` | '_ \| |_| __/ _ \ / _ \| |
+  | (_| | |_) |  _| || (_) | (_) | |  [Author]: fu11p0w3r
+   \__,_| .__/|_|  \__\___/ \___/|_|  [Version]: 0.2 
+        |_|                             
+  Admin page finder tool
+  """)
 
     @staticmethod
     def _clear_console():
@@ -54,7 +52,7 @@ class AdminFinder(object):
             try:
                 response = await session.get(url, allow_redirects=False)
             except aiohttp.ClientConnectorError:
-                pass
+                self._clintprint('[Error] Connection error, try next')
             else:
                 self._scanned_dirs_count += 1
                 if response.status == 200:
@@ -62,13 +60,10 @@ class AdminFinder(object):
                 elif response.status == (300 or 301 or 302):
                     self.redirected.append(url)
 
-                self._clear_console()
+                self._banner()
 
-                self._mini_banner()
-
-                if self._status_200:
-                    self._print_current_founded()
-                    self._clintprint(' ')
+                self._print_current_founded()
+                #self._clintprint(' ')
 
                 self._bar.next()
                 self._clintprint(f' Scanning...')
@@ -85,8 +80,7 @@ class AdminFinder(object):
                 self._clintprint(f'[!] {url} ', 'yellow')
 
     def _print_total_info(self, elapsed_time):
-        self._clear_console()
-        self._mini_banner()
+        self._banner()
         self._clintprint(f'[INFO] A total of {self._scanned_dirs_count} possible locations were enumerated')
         if elapsed_time > 60:
             self._clintprint(f'[INFO] A total spent time: {elapsed_time // 60} min {elapsed_time % 60} sec\n')
@@ -94,7 +88,7 @@ class AdminFinder(object):
             self._clintprint(f'[INFO] A total spent time: {elapsed_time} sec\n')
             self._print_current_founded()
 
-    def load_dir_list(self, path):
+    def load_wordlist(self, path):
         try:
             file = open(path, 'r')
         except FileNotFoundError:
@@ -103,7 +97,7 @@ class AdminFinder(object):
             exit()
         else:
             for line in file:
-                self._dir_list.append(line.strip('\n'))
+                self._wordlist.append(line.strip('\n'))
             file.flush()
             file.close()
             self._clintprint('\n[INFO] List with possible page locations loaded!')
@@ -116,12 +110,12 @@ class AdminFinder(object):
             asyncio.set_event_loop(loop)
 
         loop = asyncio.get_event_loop()
-        full_urls = [self._url + str(_) for _ in self._dir_list]
+        full_urls = [self._url + str(_) for _ in self._wordlist]
         tasks = [self._scan(url) for url in full_urls]
         try:
             loop.run_until_complete(asyncio.gather(*tasks))
         except KeyboardInterrupt:
-            self._mini_banner()
+            self._banner()
             self._clintprint('[CTRL+C] Byeeee!!!', 'yellow')
         else:
             self._bar.finish()
@@ -133,8 +127,8 @@ class AdminFinder(object):
 
 
 if __name__ == '__main__':
-    finder = AdminFinder()
+    finder = AdminPageFinderTool()
     print('[Example] http://google.com')
     finder.set_url(str(input('[=>] Enter the full URL to start: ')))
-    finder.load_dir_list('dirlist.txt')
+    finder.load_wordlist('wordlist.txt')
     finder.run()
