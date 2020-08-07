@@ -8,7 +8,7 @@ from clint.textui import colored, puts
 from progress.spinner import Spinner
 
 
-class AdminPageFinderTool(object):
+class AdminPanelSearchTool(object):
 
     def __init__(self):
         self._banner()
@@ -22,13 +22,13 @@ class AdminPageFinderTool(object):
     def _banner(self):
         self._clear_console()
         self._clintprint("""  
-                __ _              _ 
-    __ _ _ __  / _| |_ ___   ___ | |
-   / _` | '_ \| |_| __/ _ \ / _ \| |
-  | (_| | |_) |  _| || (_) | (_) | |  [Author]: fu11p0w3r
-   \__,_| .__/|_|  \__\___/ \___/|_|  [Version]: 0.2 
-        |_|                             
-  Admin page finder tool
+                   _              _ 
+    __ _ _ __  ___| |_ ___   ___ | |
+   / _` | '_ \/ __| __/ _ \ / _ \| |
+  | (_| | |_) \__ \ || (_) | (_) | |  [Author]: fu11p0w3r
+   \__,_| .__/|___/\__\___/ \___/|_|  [Version]: 0.2
+        |_|                         
+  Admin panel search tool
   """)
 
     @staticmethod
@@ -127,7 +127,7 @@ class AdminPageFinderTool(object):
 
 
 if __name__ == '__main__':
-    finder = AdminPageFinderTool()
+    finder = AdminPanelSearchTool()
     print('[Example] http://google.com')
     finder.set_url(str(input('[=>] Enter the full URL to start: ')))
     finder.load_wordlist('wordlist.txt')
