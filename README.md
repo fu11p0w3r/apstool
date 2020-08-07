@@ -1,5 +1,6 @@
 # APStool
 ![alt text](screenshot.png "APS screenshot")​
+
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/fu11p0w3r/apstool.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/fu11p0w3r/apstool/context:python)
 
 APSTool - is a fast Admin Panel Search Tool written in Python.
