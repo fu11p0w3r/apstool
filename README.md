@@ -1,5 +1,5 @@
 # APStool
-![alt text](screenshots/adminfinder_screenshot.png "Tool screenshot")​
+![alt text](screenshot.png "APS screenshot")​
 APSTool - is a fast Admin Panel Search Tool written in Python.
 
 
