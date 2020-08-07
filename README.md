@@ -1,6 +1,6 @@
-# adminfinder
+# APFTOOL
 ![alt text](screenshots/adminfinder_screenshot.png "Tool screenshot")​
-A small tool for searching for admin panels on a site or pages with an entrance, by brute force.
+APFTool - is a fast Admin Panel Search Tool written in Python.
 
 
 # How to start using
@@ -26,10 +26,11 @@ python adminfinder.py
 v0.2:
 - Added new directories
 - Completely rewritten with asynchronous requests added. Scanning is now much faster
+- Renamed from adminfinder to apftool
 ```
 
 # In future:
-I want to add a proxy
+Proxy support
 
 If you have ideas what to add, I will be glad to hear.
 Good luck :)
