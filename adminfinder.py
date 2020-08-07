@@ -54,8 +54,7 @@ class AdminFinder(object):
             try:
                 response = await session.get(url, allow_redirects=False)
             except aiohttp.ClientConnectorError:
-                self._clintprint('\n[ERROR] Connection error, request timeout for connection to this site!', 'red')
-                exit()
+                pass
             else:
                 self._scanned_dirs_count += 1
                 if response.status == 200:
@@ -81,33 +80,34 @@ class AdminFinder(object):
             for url in self._status_200:
                 self._clintprint(f'[+] {url} ', 'green')
         if self.redirected:
-            self._clintprint('[INFO] Founded with redirect:')
+            self._clintprint('[INFO] Found with possible redirect:')
             for url in self.redirected:
                 self._clintprint(f'[!] {url} ', 'yellow')
 
     def _print_total_info(self, elapsed_time):
         self._clear_console()
         self._mini_banner()
-        self._clintprint(f'[INFO] Total scanned dirs: {self._scanned_dirs_count}')
+        self._clintprint(f'[INFO] A total of {self._scanned_dirs_count} possible locations were enumerated')
         if elapsed_time > 60:
-            self._clintprint(f'[INFO] Total elapsed time: {elapsed_time // 60} min {elapsed_time % 60} sec\n')
+            self._clintprint(f'[INFO] A total spent time: {elapsed_time // 60} min {elapsed_time % 60} sec\n')
         else:
-            self._clintprint(f'[INFO] Total elapsed time: {elapsed_time} sec\n')
+            self._clintprint(f'[INFO] A total spent time: {elapsed_time} sec\n')
             self._print_current_founded()
 
     def load_dir_list(self, path):
         try:
             file = open(path, 'r')
         except FileNotFoundError:
-            self._clintprint('[ERROR] Directory list not found. Pls put dirlist file to program root directory!', 'red')
+            self._clintprint('[ERROR] The list with locations was not found. \n'
+                             '        Please put the list in the root of this folder with the program', 'red')
             exit()
         else:
             for line in file:
                 self._dir_list.append(line.strip('\n'))
             file.flush()
             file.close()
-            self._clintprint('\n[INFO] Directory list loaded!')
-            self._clintprint('[INFO] Starting your scan, pls wait...')
+            self._clintprint('\n[INFO] List with possible page locations loaded!')
+            self._clintprint('[INFO] Start scanning, please wait...')
 
     def run(self):
         start_time = time.time()
@@ -116,7 +116,7 @@ class AdminFinder(object):
             asyncio.set_event_loop(loop)
 
         loop = asyncio.get_event_loop()
-        full_urls = [self._url + str(dir) for dir in self._dir_list]
+        full_urls = [self._url + str(_) for _ in self._dir_list]
         tasks = [self._scan(url) for url in full_urls]
         try:
             loop.run_until_complete(asyncio.gather(*tasks))
@@ -134,6 +134,7 @@ class AdminFinder(object):
 
 if __name__ == '__main__':
     finder = AdminFinder()
-    finder.set_url(str(input('[=>] Enter url for scan: ')))
+    print('[Example] http://google.com')
+    finder.set_url(str(input('[=>] Enter the full URL to start: ')))
     finder.load_dir_list('dirlist.txt')
     finder.run()
