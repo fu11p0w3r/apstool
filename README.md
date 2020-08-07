@@ -1,23 +1,23 @@
-# APFTOOL
+# APStool
 ![alt text](screenshots/adminfinder_screenshot.png "Tool screenshot")​
-APFTool - is a fast Admin Panel Search Tool written in Python.
+APSTool - is a fast Admin Panel Search Tool written in Python.
 
 
 # How to start using
 For Linux users:
 ```
-git clone https://github.com/fu11p0w3r/adminfinder
-cd adminfinder
+git clone https://github.com/fu11p0w3r/apstool
+cd apstool
 pip install -r requirements.txt
-chmod +x adminfinder.py
-python adminfinder.py
+chmod +x apstool.py
+python apstool.py
 ```
 For Windows
 ```
 Download
-cd adminfinder
+cd apstool
 pip install -r requirements.txt
-python adminfinder.py
+python apstool.py
 
 ```
 
@@ -26,7 +26,7 @@ python adminfinder.py
 v0.2:
 - Added new directories
 - Completely rewritten with asynchronous requests added. Scanning is now much faster
-- Renamed from adminfinder to apftool
+- Renamed from adminfinder to apstool
 ```
 
 # In future:
