@@ -7,7 +7,7 @@ from os import system, name
 from clint.textui import colored, puts
 from progress.spinner import Spinner
 
-#бес не заебуй xD
+#то был рофл, для истории
 
 class AdminPanelSearchTool(object):
 
